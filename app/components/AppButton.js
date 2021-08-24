@@ -1,11 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-// import colors from '../config/colors'
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Formik } from "formik";
+import colors from "../config/colors";
 
-function AppButton({ title, onPress, color }) {
+function AppButton({ title, onPress, color = "primary" }) {
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor: color }]}
+      style={[styles.button, { backgroundColor: colors[color] }]}
       onPress={onPress}
     >
       <Text style={styles.text}>{title}</Text>
@@ -13,10 +14,9 @@ function AppButton({ title, onPress, color }) {
   );
 }
 
-export default AppButton;
-
 const styles = StyleSheet.create({
   button: {
+    backgroundColor: colors.primary,
     borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
@@ -25,9 +25,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   text: {
-    color: "white",
+    color: colors.white,
     fontSize: 18,
     textTransform: "uppercase",
     fontWeight: "bold",
   },
 });
+
+export default AppButton;
